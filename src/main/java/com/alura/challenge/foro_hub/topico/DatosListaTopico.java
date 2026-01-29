@@ -4,21 +4,23 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-public record DatosRespuestaTopico(
+public record DatosListaTopico(
         Long id,
         String titulo,
         String mensaje,
         String nombreCurso,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         LocalDateTime fechaCreacion,
-        Long idUsuario) {
+        String nombreAutor) {
 
-    public DatosRespuestaTopico(Topico topico) {
-        this(topico.getId(),
+    public DatosListaTopico(Topico topico){
+        this(
+                topico.getId(),
                 topico.getTitulo(),
                 topico.getMensaje(),
                 topico.getNombreCurso(),
                 topico.getFechaCreacion(),
-                topico.getAutor().getId());
+                topico.getAutor().getNombre()
+        );
     }
 }

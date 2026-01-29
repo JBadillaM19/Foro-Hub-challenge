@@ -38,4 +38,14 @@ public class Topico {
         this.fechaCreacion = LocalDateTime.now();
         this.activo = true;
     }
+
+   public void actualizarDatos(DatosActualizacionTopico datos){
+        this.titulo = datos.titulo();
+        this.mensaje = datos.mensaje();
+        this.nombreCurso = datos.nombreCurso();
+   }
+
+    public void eliminar() {
+        this.activo = false;
+    }
 }
