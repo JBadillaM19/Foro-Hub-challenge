@@ -40,11 +40,8 @@ public class TopicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity detallar(@PathVariable Long id) {
-        var topico = repository.findById(id);
-        if (topico.isPresent()) {
-            return ResponseEntity.ok(new DatosListaTopico(topico.get()));
-        }
-        return ResponseEntity.notFound().build();
+        var topico = repository.getReferenceById(id);
+       return ResponseEntity.ok(new DatosRespuestaTopico(topico));
     }
 
     @Transactional
